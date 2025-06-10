@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from distancia_euclidiana import distancia_euclidiana
+from services.distancia_euclidiana import distancia_euclidiana
 from typing import Tuple
 
 @dataclass

@@ -1,7 +1,14 @@
 import random
+from typing import List
+from models.aluno import Aluno
 
-def centroide_inicial(alunos, n=2):
-    centroides_iniciais = random.sample(alunos, n)
-    c1 = (centroides_iniciais[0].idade, centroides_iniciais[0].nota, centroides_iniciais[0].faltas)
-    c2 = (centroides_iniciais[1].idade, centroides_iniciais[1].nota, centroides_iniciais[1].faltas)
-    return c1, c2
+def centroide_inicial_aleatorio(alunos: List[Aluno], n: int = 2):
+    """
+    Seleciona N alunos aleatórios para servir como centróides iniciais.
+    Isso ainda pode ser útil para uma configuração inicial totalmente automatizada, se não houver entrada do usuário.
+    """
+    if len(alunos) < n:
+        raise ValueError("Não há alunos suficientes para selecionar centróides iniciais.")
+    
+    centroides_iniciais_alunos = random.sample(alunos, n)
+    return [(a.idade, a.nota, a.faltas) for a in centroides_iniciais_alunos]
